@@ -80,7 +80,23 @@ torchrun --nproc_per_node 1 example_chat_completion.py \
     --ckpt_dir Meta-Llama-3-8B-Instruct/ \
     --tokenizer_path Meta-Llama-3-8B-Instruct/tokenizer.model \
     --max_seq_len 512 --max_batch_size 6
+
 ```
+
+
+# Remote GPU-Server-TU
+
+# Ubuntu verion =22.04
+hostnamectl 
+
+# CUDA version =12.2
+nvidia-smi
+
+
+pip3 install torch torchvision torchaudio
+
+
+
 **Note**
 - Replace  `Meta-Llama-3-8B-Instruct/` with the path to your checkpoint directory and `Meta-Llama-3-8B-Instruct/tokenizer.model` with the path to your tokenizer model.
 - The `–nproc_per_node` should be set to the [MP](#inference) value for the model you are using.
