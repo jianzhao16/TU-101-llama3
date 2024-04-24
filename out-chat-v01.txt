@@ -1,0 +1,46 @@
+> initializing model parallel with size 1
+> initializing ddp with size 1
+> initializing pipeline with size 1
+Loaded in 33.38 seconds
+I believe the meaning of life is
+>  to be happy. It is a simple concept, but it is very difficult to achieve. The path to happiness is a difficult one to travel. It requires hard work and dedication. The journey to happiness is not an easy one, but it is worth it. The rewards of happiness are endless. Happiness is the key to
+
+==================================
+
+Simply put, the theory of relativity states that 
+> 1. the laws of physics are the same for all non-accelerating observers, and 2. the speed of light in a vacuum is the same for all observers, regardless of their relative motion or of the motion of the source of the light. These two principles are known as postulates of special relativity
+
+==================================
+
+A brief message congratulating the team on the launch:
+
+        Hi everyone,
+
+        I just 
+>  wanted to congratulate you on the launch of the new site.  It
+        looks great!  I'm looking forward to using it.
+
+        Good luck!
+
+        -Dennis
+
+
+==================================
+
+Translate English to French:
+
+        sea otter => loutre de mer
+        peppermint => menthe poivrée
+        plush girafe => girafe peluche
+        cheese =>
+>  fromage
+        chocolate => chocolat
+        ice cream => glace
+        ice cream cone => cornet à glace
+        ice cream scoop => cuillère à glace
+        ice cream truck => camion glace
+        ice cream cone holder => support cornet à glace
+        ice
+
+==================================
+
