@@ -6,6 +6,8 @@ __pycache__/
 # C extensions
 *.so
 
+*.tif
+
 # Distribution / packaging
 .Python
 build/
@@ -165,3 +167,5 @@ cython_debug/
 .idea/modules.xml
 .idea/vcs.xml
 Meta-Llama-3-8B-Instruct/consolidated.00.pth
+mygnn/ctcdata/Fluo-C2DL-Huh7-Training.zip
+mygnn/ctcdata/Fluo-C2DL-Huh7-Test.zip
