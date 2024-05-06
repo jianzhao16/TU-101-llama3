@@ -7,6 +7,9 @@ import fire
 
 from llama import Dialog, Llama
 
+import torch
+
+#torch.cuda.set_device(0)  # Set the current GPU to GPU 0
 
 def main(
     ckpt_dir: str,
