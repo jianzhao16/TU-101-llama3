@@ -48,7 +48,9 @@ python --version
 ******************************************************************
 Create Virtual Python in Some Projects
 
-python -m venv myenvpy10
+pyenv local 3.10.1
+python --version
+python -m venv ubutu2004-py10
 source ubutu2004-py10/bin/activate
 
 ******************************************************************
@@ -64,7 +66,6 @@ source ubutu2004-py10/bin/activate
 
 Run Cmd : 
 
- streamlit run .\LLM_with_Services.py
 
 
 
