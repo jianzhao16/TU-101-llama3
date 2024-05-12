@@ -57,6 +57,18 @@ source ubutu2004-py10/bin/activate
 
 
 
+Conda
+
+
+wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
+chmod +x Miniconda3-latest-Linux-x86_64.sh
+./Miniconda3-latest-Linux-x86_64.sh
+
+conda create -n ubu2004py10 python=3.10
+conda activate ubu2004py10
+conda install numpy
+
+conda deactivate
 
 
 
