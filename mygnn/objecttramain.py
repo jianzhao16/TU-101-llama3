@@ -6,10 +6,11 @@ import os
 from torch import nn, optim
 import torch.nn.functional as F
 
+from PIL import Image
+import os
 
-
-from google.colab import drive
-drive.mount('/content/drive')
+#from google.colab import drive
+#drive.mount('/content/drive')
 
 
 class ImageDataset(Dataset):
@@ -99,6 +100,45 @@ def train(model, dataloader, optimizer, epochs=5):
                 print(f'Epoch number {epoch+1}, Training loss: {loss.item()}')
 
 
-dataset = ImageDataset(root_dir='/content/drive/MyDrive/Colabdata/Fluo-C2DL-Huh7-Training/Fluo-C2DL-Huh7/01', transform=transform)
+
+
+def convert_tiff_images(input_dir, output_dir, output_format):
+    """
+    Convert all TIFF images in the input directory to the specified output format (JPEG or PNG).
+
+    Parameters:
+        input_dir (str): Path to the directory containing TIFF images.
+        output_dir (str): Path to the directory where converted images will be saved.
+        output_format (str): Output format for conversion, either 'JPEG' or 'PNG'.
+    """
+    # Ensure the output directory exists, create it if it doesn't
+    os.makedirs(output_dir, exist_ok=True)
+
+    # Iterate through each file in the input directory
+    for filename in os.listdir(input_dir):
+        if filename.endswith('.tiff') or filename.endswith('.tif'):  # Check if the file is a TIFF image
+            # Open the TIFF image
+            with Image.open(os.path.join(input_dir, filename)) as img:
+                # Convert to the specified output format
+                if output_format.upper() == 'JPEG':
+                    img.convert('RGB').save(os.path.join(output_dir, os.path.splitext(filename)[0] + '.jpg'), 'JPEG')
+                elif output_format.upper() == 'PNG':
+                    img.convert('RGBA').save(os.path.join(output_dir, os.path.splitext(filename)[0] + '.png'), 'PNG')
+
+    print("Conversion complete.")
+
+# Example usage:
+# convert_tiff_to_jpeg('/path/to/tiff_directory', '/path/to/output_directory')
+
+
+#dataset = ImageDataset(root_dir='/content/drive/MyDrive/Colabdata/Fluo-C2DL-Huh7-Training/Fluo-C2DL-Huh7/01', transform=transform)
+tiff_dir='/home/tus35240/mydata/mygit/llama3/mygnn/ctcdata/Fluo-C2DL-Huh7-Training/Fluo-C2DL-Huh7/01'
+jpg_dir ='/home/tus35240/mydata/mygit/llama3/mygnn/ctcdata/Fluo-C2DL-Huh7-Training/Fluo-C2DL-Huh7/01jpg'
+png_dir ='/home/tus35240/mydata/mygit/llama3/mygnn/ctcdata/Fluo-C2DL-Huh7-Training/Fluo-C2DL-Huh7/01png'
+
+convert_tiff_images(tiff_dir, png_dir,'png')
+dataset = ImageDataset(root_dir=png_dir, transform=transform)
+
+
 dataloader = DataLoader(dataset, batch_size=2, shuffle=True)
 train(model, dataloader, optimizer)
