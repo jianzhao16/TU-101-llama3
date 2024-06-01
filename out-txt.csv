@@ -1,0 +1,10 @@
+prompt,completion
+"Extract the type of service and zipcode from the following user query:
+
+        I want to food service nearby 19140 => service:Food, zipcode:19140, status:okay
+        He want to food lunch nearby 19132 => service:Food, zipcode:19132, status:okay
+        Counseling services => service: Mental Health, zipcode:000000, status:okay
+        Temporary housing => service:Shelter,zipcode:000000, status:okay
+      
+find food nearby =>"," service:Food, zipcode:000000, status:okay
+        find food lunch nearby => service:Food, zipcode:000"

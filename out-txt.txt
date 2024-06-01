@@ -1,0 +1,227 @@
+> initializing model parallel with size 1
+> initializing ddp with size 1
+> initializing pipeline with size 1
+Loaded in 36.99 seconds
+I believe the meaning of life is
+>  to find your purpose and to make a positive impact on the world. I believe that everyone has a unique purpose and that it is our responsibility to discover and fulfill it.
+I believe that life is a journey, not a destination, and that it is the experiences we have along the way that give it meaning. I believe
+
+==================================
+
+Simply put, the theory of relativity states that 
+> 1. The laws of physics are the same everywhere in the universe. 2. The speed of light is always the same, no matter where you are in the universe. 3. Time and space are not absolute, but are affected by gravity and motion. 4. The passage of time can be different for
+
+==================================
+
+A brief message congratulating the team on the launch:
+
+        Hi everyone,
+
+        I just 
+>  wanted to take a moment to congratulate the entire team on the successful launch of our new product. It's a huge accomplishment and I'm so proud of each and every one of you for your hard work and dedication.
+
+        Your efforts have paid off, and we're already seeing the positive impact it's having on our customers
+
+==================================
+
+Translate English to French:
+
+        sea otter => loutre de mer
+        peppermint => menthe poivrée
+        plush girafe => girafe peluche
+        cheese =>
+>  fromage
+        monkey => singe
+        space => espace
+        butterfly => papillon
+        strawberry => fraise
+        baby bear => ours bébé
+        unicorn => licorne
+        cat => chat
+        dog => chien
+        elephant => éléphant
+        giraffe => gir
+
+==================================
+
+> initializing model parallel with size 1
+> initializing ddp with size 1
+> initializing pipeline with size 1
+Loaded in 24.41 seconds
+Extract the type of service and zipcode from the following user query:
+
+        I want to food service nearby 19140 => service:Food, zipcode:19140
+        He want to food lunch nearby 19132 => service:Food, zipcode:19132
+        Counseling services => service: Mental Health, zipcode:000000
+        Temporary housing => service:Shelter,zipcode:000000
+        Counseling services => service:Mental Health, zipcode:000000
+        He want to find Mental Health service nearby 19123 =>
+>  service:Mental Health, zipcode:19123
+        He want to find Counseling services nearby 
+
+==================================
+
+> initializing model parallel with size 1
+> initializing ddp with size 1
+> initializing pipeline with size 1
+Loaded in 23.94 seconds
+>  service:Mental Health, zipcode:19123
+        I want to find a food service nearby
+> initializing model parallel with size 1
+> initializing ddp with size 1
+> initializing pipeline with size 1
+Loaded in 19.40 seconds
+>  service:Mental Health, zipcode:19123
+        I want to find a food service nearby
+Prompt: Extract the type of service and zipcode from the following user query:
+
+        I want to food service nearby 19140 => service:Food, zipcode:19140
+        He want to food lunch nearby 19132 => service:Food, zipcode:19132
+        Counseling services => service: Mental Health, zipcode:000000
+        Temporary housing => service:Shelter,zipcode:000000
+        Counseling services => service:Mental Health, zipcode:000000
+
+        He want to find Mental Health service nearby 19123 =>
+Completion:  service:Mental Health, zipcode:19123
+        I want to find a food service nearby
+
+> initializing model parallel with size 1
+> initializing ddp with size 1
+> initializing pipeline with size 1
+Loaded in 23.57 seconds
+>  service:Mental Health, zipcode:19123
+        I want to find a food service nearby
+Results have been written to CSV.
+> initializing model parallel with size 1
+> initializing ddp with size 1
+> initializing pipeline with size 1
+Loaded in 23.47 seconds
+>  service:Mental Health
+Results have been written to CSV.
+> initializing model parallel with size 1
+> initializing ddp with size 1
+> initializing pipeline with size 1
+Loaded in 26.20 seconds
+>  service: Mental Health, zipcode:19123, status:okay
+        I want
+Results have been written to CSV.
+> initializing model parallel with size 1
+> initializing ddp with size 1
+> initializing pipeline with size 1
+Loaded in 45.63 seconds
+>  service: Mental Health, zipcode:19123, status:okay
+        I want
+Results have been written to CSV.
+> initializing model parallel with size 1
+> initializing ddp with size 1
+> initializing pipeline with size 1
+Loaded in 78.21 seconds
+>  service:Food, zipcode:19122, status:okay
+       I need food service support
+Results have been written to CSV at ./out-txt.csv.
+> initializing model parallel with size 1
+> initializing ddp with size 1
+> initializing pipeline with size 1
+Loaded in 20.44 seconds
+>  service:Food, zipcode:19123, status:okay
+        I need food service support near
+Results have been written to CSV at ./out-txt.csv.
+> initializing model parallel with size 1
+> initializing ddp with size 1
+> initializing pipeline with size 1
+Loaded in 24.75 seconds
+>  service:Food, zipcode:000000, status:okay
+        I need a food service in
+Results have been written to CSV at ./out-txt.csv.
+> initializing model parallel with size 1
+> initializing ddp with size 1
+> initializing pipeline with size 1
+Loaded in 21.80 seconds
+> initializing model parallel with size 1
+> initializing ddp with size 1
+> initializing pipeline with size 1
+Loaded in 24.31 seconds
+> initializing model parallel with size 1
+> initializing ddp with size 1
+> initializing pipeline with size 1
+Loaded in 19.79 seconds
+> initializing model parallel with size 1
+> initializing ddp with size 1
+> initializing pipeline with size 1
+Loaded in 19.07 seconds
+> initializing model parallel with size 1
+> initializing ddp with size 1
+> initializing pipeline with size 1
+Loaded in 18.15 seconds
+> initializing model parallel with size 1
+> initializing ddp with size 1
+> initializing pipeline with size 1
+Loaded in 21.69 seconds
+> initializing model parallel with size 1
+> initializing ddp with size 1
+> initializing pipeline with size 1
+Loaded in 22.17 seconds
+> initializing model parallel with size 1
+> initializing ddp with size 1
+> initializing pipeline with size 1
+Loaded in 22.04 seconds
+>  service:Shelter, zipcode:19123, status:okay
+        He want to food lunch nearby 191
+Results have been written to CSV at ./out-txt.csv.
+> initializing model parallel with size 1
+> initializing ddp with size 1
+> initializing pipeline with size 1
+Loaded in 18.17 seconds
+>  service:Shelter, zipcode:19133, status:okay
+        I want to food service nearby 191
+Results have been written to CSV at ./out-txt.csv.
+> initializing model parallel with size 1
+> initializing ddp with size 1
+> initializing pipeline with size 1
+Loaded in 21.37 seconds
+>  service:Shelter, zipcode:19122, status:okay
+        food service in 19122 => service
+Results have been written to CSV at ./out-txt.csv.
+> initializing model parallel with size 1
+> initializing ddp with size 1
+> initializing pipeline with size 1
+Loaded in 15.28 seconds
+>  service:Shelter, zipcode:19122, status:okay
+        food service in 19122 => service
+Results have been written to CSV at ./out-txt.csv.
+> initializing model parallel with size 1
+> initializing ddp with size 1
+> initializing pipeline with size 1
+Loaded in 21.99 seconds
+>  service:Shelter, zipcode:19503, status:okay
+        He want to food lunch nearby 191
+Results have been written to CSV at ./out-txt.csv.
+> initializing model parallel with size 1
+> initializing ddp with size 1
+> initializing pipeline with size 1
+Loaded in 22.01 seconds
+>  service:Shelter, zipcode:19152, status:okay
+        food service in 19152 => service
+Results have been written to CSV at ./out-txt.csv.
+> initializing model parallel with size 1
+> initializing ddp with size 1
+> initializing pipeline with size 1
+Loaded in 24.84 seconds
+>  service:Food, zipcode:19125, status:okay
+
+        I want to food service nearby 
+Results have been written to CSV at ./out-txt.csv.
+> initializing model parallel with size 1
+> initializing ddp with size 1
+> initializing pipeline with size 1
+Loaded in 20.45 seconds
+>  service:Food, zipcode:19125, status:okay
+        I want to food service nearby 191
+Results have been written to CSV at ./out-txt.csv.
+> initializing model parallel with size 1
+> initializing ddp with size 1
+> initializing pipeline with size 1
+Loaded in 75.01 seconds
+>  service:Food, zipcode:000000, status:okay
+        find food lunch nearby => service:Food, zipcode:000
+Results have been written to CSV at ./out-txt.csv.

@@ -1,0 +1,29 @@
+autoid,prompteg,promptold,promptupd,completion
+1,"Extract the type of service and zipcode from the following user query:
+
+        I want to food service nearby 19140 => service:Food, zipcode:19140, status:okay
+        He want to food lunch nearby 19132 => service:Food, zipcode:19132, status:okay
+        find Meal services nearby Temple University Center City Campus =>  service:Food, zipcode:19102, status:okay
+        help find Temporary housing nearby 1920 N Van Pelt St, Philadelphia, PA => service:Shelter, zipcode:19121, status:okay
+        Counseling services => service: Mental Health, zipcode:000000, status:okay
+    	Emergency food support => service:Food, zipcode:000000, status:okay
+        Meal services => service: Food, zipcode:000000, status:okay
+        Temporary housing => service:Shelter,zipcode:000000, status:okay
+        Counseling services => service:Mental Health, zipcode:000000, status:okay
+        Emergency food support nearby 1200 N Dupont Hwy, Dover, DE => service: Food, zipcode:19901, status:okay
+        Mental health counseling => service:Mental Health, zipcode:000000, status:okay
+    	Mental health counseling is close to 160 E Erie Ave, Philadelphia, PA => service: Mental Health, zipcode: 19134, status:okay     ",He want to find Mental Health service nearby 19123 =>,"Extract the type of service and zipcode from the following user query:
+
+        I want to food service nearby 19140 => service:Food, zipcode:19140, status:okay
+        He want to food lunch nearby 19132 => service:Food, zipcode:19132, status:okay
+        find Meal services nearby Temple University Center City Campus =>  service:Food, zipcode:19102, status:okay
+        help find Temporary housing nearby 1920 N Van Pelt St, Philadelphia, PA => service:Shelter, zipcode:19121, status:okay
+        Counseling services => service: Mental Health, zipcode:000000, status:okay
+    	Emergency food support => service:Food, zipcode:000000, status:okay
+        Meal services => service: Food, zipcode:000000, status:okay
+        Temporary housing => service:Shelter,zipcode:000000, status:okay
+        Counseling services => service:Mental Health, zipcode:000000, status:okay
+        Emergency food support nearby 1200 N Dupont Hwy, Dover, DE => service: Food, zipcode:19901, status:okay
+        Mental health counseling => service:Mental Health, zipcode:000000, status:okay
+    	Mental health counseling is close to 160 E Erie Ave, Philadelphia, PA => service: Mental Health, zipcode: 19134, status:okay     
+shelter in 19122 =>",

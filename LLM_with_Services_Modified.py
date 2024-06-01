@@ -19,11 +19,12 @@ def ask_openai_for_service_extraction(question, api_key, conversation_history):
     combined_query = f"{extraction_instruction}\n{question}"
     full_conversation = conversation_history + [{"role": "user", "content": combined_query}]
     response = llama.create_chat_completion(model="llama-3-8b", messages=full_conversation)
-    
+
     if response.choices:
         conversation_history.append({"role": "user", "content": combined_query})
         conversation_history.append({"role": "assistant", "content": response.choices[0].message['content']})
     return response
+
 
 # Function to classify service type
 def classify_service_type(service_type, api_key):
@@ -39,7 +40,7 @@ def classify_service_type(service_type, api_key):
     Based on the examples above, classify the following service type into the correct category (Food, Shelter, Mental Health):
     "{service_type}": """
     response = llama.create_completion(model="llama-3-8b", prompt=prompt, max_tokens=60)
-    
+
     raw_category = response.choices[0].text.strip() if response.choices else "Other"
     st.write("Raw Model Response for Classification:", raw_category)
 
@@ -51,6 +52,7 @@ def classify_service_type(service_type, api_key):
             return standard_category
 
     return "Other"
+
 
 # Function to safely convert time string to 24-hour format
 def safe_convert_time(time_str):
@@ -66,13 +68,14 @@ def safe_convert_time(time_str):
         # Return original string or some default if no specific case matched
         return '00:00'  # Adjust this if necessary
 
+
 @st.cache_data
 def read_data(df):
     df = df.dropna(subset=['Latitude', 'Longitude'])  # Ensure we have the necessary location data
     # Get the current day and time
     now = datetime.now()
     current_day = now.strftime('%A')  # e.g., 'Monday'
-    
+
     data = []
     for index, row in df.iterrows():
         # Merge and clean services information
@@ -80,7 +83,7 @@ def read_data(df):
         other_services = eval(row['Other_Services']) if pd.notna(row['Other_Services']) else []
         services = main_services + other_services
         services = [service for service in services if service != 'None']
-        
+
         # Get the opening hours for the current day
         opening_hours_today = row[current_day] if pd.notna(row[current_day]) else 'Unavailable'
 
@@ -105,6 +108,7 @@ def read_data(df):
 
     return data
 
+
 # Streamlit UI
 st.markdown("# User Input")
 st.markdown("### Ask me about available services:")
@@ -116,30 +120,29 @@ submit_button = st.button("Submit")
 # Initialize global variables
 conversation_history = []
 
-
 # Load .env file
 load_dotenv()
 # Retrieve API key
 api_key = os.getenv("API_KEY")
-#api_key = ''  # Replace this with your actual OpenAI API key
+# api_key = ''  # Replace this with your actual OpenAI API key
 
 if submit_button:
     response = ask_openai_for_service_extraction(user_query, api_key, conversation_history)
     if response.choices:
         extracted_info = response.choices[0].message['content'].strip()
-        
+
         # Debugging: Display extracted information
         st.write("Extracted Information:", extracted_info)
-        
+
         lines = extracted_info.lower().split('\n')
         parsed_info = {}
         for line in lines:
             # Remove any leading hyphens
-            line=line.replace('- ', '')
+            line = line.replace('- ', '')
             # Replace common synonyms
             line = (line.replace('type of service:', 'service type:')
-                        .replace('service:', 'service type:')
-                        .replace('zipcode:', 'zip code:'))
+                    .replace('service:', 'service type:')
+                    .replace('zipcode:', 'zip code:'))
             parts = line.split(':', 1)
             if len(parts) == 2:
                 key, value = parts
@@ -147,12 +150,14 @@ if submit_button:
 
         raw_service_type = parsed_info.get("service type", "").title()
         zipcode = parsed_info.get("zip code", "")
-        
+        if zipcode == '000000':
+            zipcode='19122'
+            st.write('since no zipcode find, we use default zip code: 19122 to show the result')
         if raw_service_type and zipcode:
             classified_service_type = classify_service_type(raw_service_type, api_key)
             st.write("Type of Service:", classified_service_type)
             st.write("Zipcode:", zipcode)
-            
+
             if classified_service_type != "Other":
                 service_files = {
                     "Shelter": "Final_Temporary_Shelter_20240109.csv",
@@ -162,7 +167,7 @@ if submit_button:
                 datafile = service_files[classified_service_type]
                 df = pd.read_csv(datafile)
                 data = read_data(df)
-                
+
                 # Use pgeocode for geocoding
                 nomi = pgeocode.Nominatim('us')
                 location_info = nomi.query_postal_code(zipcode)
@@ -184,7 +189,7 @@ if submit_button:
                     ).add_to(map)
 
                     marker_cluster = MarkerCluster().add_to(map)
-                    
+
                     for loc in data:
                         iframe = IFrame(loc['info'], width=300, height=200)
                         popup = folium.Popup(iframe, max_width=500)
@@ -193,9 +198,9 @@ if submit_button:
                             popup=popup,
                             icon=folium.Icon(color='red')
                         ).add_to(marker_cluster)
-                    
+
                     st.header(f"{classified_service_type} Services near {zipcode}")
-                    #folium_static(map)
+                    # folium_static(map)
                     folium_static(map, width=800, height=600)  # Adjust width and height as needed
 
                 else:
@@ -207,4 +212,3 @@ if submit_button:
                 st.error("Could not extract the type of service from your query. Please try rephrasing.")
             if not zipcode:
                 st.error("Could not extract the ZIP code from your query. Please try rephrasing.")
-
