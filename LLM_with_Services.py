@@ -16,7 +16,9 @@ from dotenv import load_dotenv
 def ask_openai_for_service_extraction(question, api_key, conversation_history):
     openai.api_key = api_key
     extraction_instruction = "Extract the type of service and zipcode from the following user query:"
-    combined_query = f"{extraction_instruction}\n{question}"
+    #extraction_instruction =""
+    #combined_query = f"{extraction_instruction}\n{question}"
+    combined_query = f"{question}"
     full_conversation = conversation_history + [{"role": "user", "content": combined_query}]
     response = openai.ChatCompletion.create(model="gpt-4", messages=full_conversation)
     
@@ -106,9 +108,10 @@ def read_data(df):
     return data
 
 # Streamlit UI
-st.markdown("# User Input")
+st.markdown("# PPD Chatbot")
 st.markdown("### Ask me about available services:")
-user_query = st.text_input("Enter your query (e.g., 'I need food service support near 19122')", key="user_query")
+#user_query = st.text_input("Enter your query (e.g., 'What is PPD')", key="user_query")
+user_query = st.text_area("Enter your query (e.g., 'What is PPD')", key="user_query")
 
 # Submit button
 submit_button = st.button("Submit")
@@ -129,82 +132,5 @@ if submit_button:
         extracted_info = response.choices[0].message['content'].strip()
         
         # Debugging: Display extracted information
-        st.write("Extracted Information:", extracted_info)
-        
-        lines = extracted_info.lower().split('\n')
-        parsed_info = {}
-        for line in lines:
-            # Remove any leading hyphens
-            line=line.replace('- ', '')
-            # Replace common synonyms
-            line = (line.replace('type of service:', 'service type:')
-                        .replace('service:', 'service type:')
-                        .replace('zipcode:', 'zip code:'))
-            parts = line.split(':', 1)
-            if len(parts) == 2:
-                key, value = parts
-                parsed_info[key.strip()] = value.strip()
-
-        raw_service_type = parsed_info.get("service type", "").title()
-        zipcode = parsed_info.get("zip code", "")
-        
-        if raw_service_type and zipcode:
-            classified_service_type = classify_service_type(raw_service_type, api_key)
-            st.write("Type of Service:", classified_service_type)
-            st.write("Zipcode:", zipcode)
-            
-            if classified_service_type != "Other":
-                service_files = {
-                    "Shelter": "Final_Temporary_Shelter_20240109.csv",
-                    "Mental Health": "Final_Mental_Health_20240109.csv",
-                    "Food": "Final_Emergency_Food_20240109.csv"
-                }
-                datafile = service_files[classified_service_type]
-                df = pd.read_csv(datafile)
-                data = read_data(df)
-                
-                # Use pgeocode for geocoding
-                nomi = pgeocode.Nominatim('us')
-                location_info = nomi.query_postal_code(zipcode)
-
-                if not location_info.empty:
-                    latitude_user = location_info['latitude']
-                    longitude_user = location_info['longitude']
-                    city_name = location_info['place_name']
-                    st.write(f"Coordinates for {zipcode} ({city_name}): {latitude_user}, {longitude_user}")
-
-                    map = folium.Map(location=[latitude_user, longitude_user], zoom_start=12)
-                    folium.CircleMarker(
-                        location=[latitude_user, longitude_user],
-                        radius=80,
-                        color='blue',
-                        fill=True,
-                        fill_color='blue',
-                        fill_opacity=0.2
-                    ).add_to(map)
-
-                    marker_cluster = MarkerCluster().add_to(map)
-                    
-                    for loc in data:
-                        iframe = IFrame(loc['info'], width=300, height=200)
-                        popup = folium.Popup(iframe, max_width=500)
-                        folium.Marker(
-                            location=[loc['latitude'], loc['longitude']],
-                            popup=popup,
-                            icon=folium.Icon(color='red')
-                        ).add_to(marker_cluster)
-                    
-                    st.header(f"{classified_service_type} Services near {zipcode}")
-                    #folium_static(map)
-                    folium_static(map, width=800, height=600)  # Adjust width and height as needed
-
-                else:
-                    st.sidebar.error(f"Error: Unable to retrieve location information for ZIP code {zipcode}")
-            else:
-                st.error("Service type is not recognized. Please try again with a different service type.")
-        else:
-            if not raw_service_type:
-                st.error("Could not extract the type of service from your query. Please try rephrasing.")
-            if not zipcode:
-                st.error("Could not extract the ZIP code from your query. Please try rephrasing.")
+        st.write("Answer:", extracted_info)
 

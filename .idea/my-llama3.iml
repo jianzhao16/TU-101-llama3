@@ -4,8 +4,9 @@
     <content url="file://$MODULE_DIR$">
       <excludeFolder url="file://$MODULE_DIR$/venv10Mac" />
       <excludeFolder url="file://$MODULE_DIR$/venv10win" />
+      <excludeFolder url="file://$MODULE_DIR$/venv310win" />
     </content>
-    <orderEntry type="inheritedJdk" />
+    <orderEntry type="jdk" jdkName="Python 3.10 (TU-101-llama3) (2)" jdkType="Python SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
   </component>
 </module>
