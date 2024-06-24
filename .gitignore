@@ -10,6 +10,8 @@ Meta-Llama-3-8B/
 # C extensions
 *.so
 
+.idea/
+
 # Distribution / packaging
 .Python
 build/
